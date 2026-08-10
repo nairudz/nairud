@@ -1,30 +1,25 @@
 // Instant Interactive Activity Presentation Switcher
 function switchActivity(activityId, element) {
-  // Hide all active activity display frames
   const contents = document.querySelectorAll('.project-content');
   contents.forEach(item => {
     item.classList.remove('active');
   });
 
-  // Remove highlight active state from menu buttons
   const buttons = document.querySelectorAll('.activity-btn');
   buttons.forEach(btn => {
     btn.classList.remove('active');
   });
 
-  // Display targeted product presentation directly inside screen
   const targetContent = document.getElementById(activityId);
   if (targetContent) {
     targetContent.classList.add('active');
 
-    // Force refresh iframe inside tab so GitHub Pages renders it cleanly
     const iframe = targetContent.querySelector('iframe');
     if (iframe && iframe.src) {
       iframe.src = iframe.src;
     }
   }
 
-  // Set active state on clicked option
   if (element) {
     element.classList.add('active');
   }
@@ -74,3 +69,25 @@ if (canvas) {
 
   animateStars();
 }
+
+// Tap-in / Tap-away Mobile Interaction Handler
+document.addEventListener('DOMContentLoaded', () => {
+  const interactiveCards = document.querySelectorAll('.intro-card, .stack-card, .portfolio-image-wrapper');
+
+  interactiveCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      if (card.classList.contains('active-pop')) {
+        card.classList.remove('active-pop');
+      } else {
+        interactiveCards.forEach(c => c.classList.remove('active-pop'));
+        card.classList.add('active-pop');
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    interactiveCards.forEach(card => card.classList.remove('active-pop'));
+  });
+});

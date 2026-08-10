@@ -223,14 +223,14 @@ h2 {
 }
 
 .intro-card:hover,
-.intro-card:focus {
+.intro-card.active-pop {
   transform: translateX(0px) translateY(0px) scale(1.25) rotate(0deg) !important;
   z-index: 20 !important;
   box-shadow: 10px 10px 0px #ffffff;
 }
 
 .intro-card:hover img,
-.intro-card:focus img {
+.intro-card.active-pop img {
   object-fit: contain;
   background: #000000;
 }
@@ -378,14 +378,14 @@ h2 {
 }
 
 .stack-card:hover,
-.stack-card:focus {
+.stack-card.active-pop {
   transform: translateX(0) scale(1.18) rotate(0deg) !important;
   z-index: 10 !important;
   box-shadow: 10px 10px 0px #ffffff;
 }
 
 .stack-card:hover img,
-.stack-card:focus img {
+.stack-card.active-pop img {
   object-fit: contain;
   background: #000000;
 }
@@ -463,7 +463,7 @@ h2 {
 }
 
 .portfolio-image-wrapper:hover img,
-.portfolio-image-wrapper:focus img {
+.portfolio-image-wrapper.active-pop img {
   transform: scale(1.08);
 }
 
