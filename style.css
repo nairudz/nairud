@@ -1,0 +1,643 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Courier Prime', monospace;
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Starfield Background Canvas */
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: #000000;
+}
+
+/* Animated Floating Pixel Art Clouds */
+.cloud {
+  position: fixed;
+  background: #ffffff;
+  opacity: 0.15;
+  box-shadow: 
+    20px 0 0 #ffffff,
+    40px 0 0 #ffffff,
+    10px -10px 0 #ffffff,
+    30px -10px 0 #ffffff;
+  width: 60px;
+  height: 20px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cloud-1 { top: 15%; left: -100px; animation: moveCloud 25s linear infinite; }
+.cloud-2 { top: 45%; left: -100px; animation: moveCloud 35s linear infinite 10s; }
+.cloud-3 { top: 75%; left: -100px; animation: moveCloud 30s linear infinite 5s; }
+
+@keyframes moveCloud {
+  0% { transform: translateX(-150px); }
+  100% { transform: translateX(calc(100vw + 200px)); }
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #000000;
+  border-bottom: 2px solid #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 9999;
+}
+
+.navbar .logo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Screen Section Container - Full Screen Fill */
+.page-section {
+  width: 100vw;
+  height: 100vh;
+  padding: 70px 2rem 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #333333;
+}
+
+/* Full Window OS Style Containers */
+.full-window {
+  width: 100%;
+  max-width: 1200px;
+  height: calc(100vh - 100px);
+  border: 2px solid #ffffff;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 6px 6px 0px #ffffff;
+}
+
+.window-header {
+  height: 28px;
+  border-bottom: 2px solid #ffffff;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-controls span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #000000;
+  border-radius: 50%;
+}
+
+.window-body {
+  padding: 2rem;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section Typography */
+h1.name {
+  font-size: 3rem;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.greeting, .sub-heading {
+  font-size: 1.3rem;
+}
+
+.about-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  text-align: justify;
+}
+
+.info-details {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px dashed #ffffff;
+  line-height: 2;
+  font-size: 1.1rem;
+}
+
+/* PAGE 1: Intro Section Screen Layout & Staggered 3-Picture Stack */
+.intro-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+.intro-stack-container {
+  position: relative;
+  width: 420px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-card {
+  position: absolute;
+  width: 230px;
+  height: 250px;
+  border: 2px solid #ffffff;
+  background: #000000;
+  padding: 8px;
+  box-shadow: 6px 6px 0px #ffffff;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.2s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.intro-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #ffffff;
+}
+
+/* Offsets matching your custom drawing */
+/* 1. Top-Left Card */
+.intro-card-1 {
+  transform: translateX(-70px) translateY(-110px) rotate(-3deg);
+  z-index: 1;
+}
+
+/* 2. Middle-Right Card */
+.intro-card-2 {
+  transform: translateX(60px) translateY(-10px) rotate(4deg);
+  z-index: 2;
+}
+
+/* 3. Bottom-Left Card */
+.intro-card-3 {
+  transform: translateX(-60px) translateY(100px) rotate(-2deg);
+  z-index: 3;
+}
+
+/* Hover Effect: Expands Hovered Intro Photo & Displays Full Picture in Front */
+.intro-card:hover {
+  transform: translateX(0px) translateY(0px) scale(1.25) rotate(0deg) !important;
+  z-index: 20 !important;
+  box-shadow: 10px 10px 0px #ffffff;
+}
+
+.intro-card:hover img {
+  object-fit: contain; /* Full picture on hover */
+  background: #000000;
+}
+
+/* PAGE 3: Contact Window */
+.contact-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.contact-window h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.contact-window .accent-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.contact-list {
+  list-style: none;
+  line-height: 2.8;
+  font-size: 1.5rem;
+}
+
+.contact-list strong {
+  display: inline-block;
+  min-width: 140px;
+}
+
+.contact-list a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* PAGE 4: Activity Embedded View */
+.activities-layout {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+}
+
+.activity-menu {
+  list-style: none;
+  width: 25%;
+}
+
+.activity-btn {
+  font-size: 1.2rem;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  background: #000000;
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+.activity-btn:hover, .activity-btn.active {
+  background: #ffffff;
+  color: #000000;
+  font-weight: bold;
+}
+
+.project-display-area {
+  width: 75%;
+  height: 100%;
+  border: 2px solid #ffffff;
+  background: #000000;
+}
+
+.project-content {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.project-content.active {
+  display: block;
+}
+
+.live-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #ffffff;
+}
+
+/* PAGE 5: 3-Stack Interactive Achievement Cards */
+.stacked-achievements-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.stack-card {
+  position: absolute;
+  width: 320px;
+  height: 380px;
+  border: 2px solid #ffffff;
+  background: #000000;
+  padding: 10px;
+  box-shadow: 6px 6px 0px #ffffff;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.2s, width 0.4s, height 0.4s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stack-card img {
+  width: 100%;
+  height: 85%;
+  object-fit: cover;
+  border: 1px solid #ffffff;
+}
+
+.stack-card p {
+  margin-top: 8px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card-1 {
+  transform: translateX(-140px) rotate(-8deg);
+  z-index: 1;
+}
+
+.card-2 {
+  transform: translateX(0px) rotate(0deg);
+  z-index: 2;
+}
+
+.card-3 {
+  transform: translateX(140px) rotate(8deg);
+  z-index: 1;
+}
+
+.stack-card:hover {
+  transform: translateX(0) scale(1.18) rotate(0deg) !important;
+  z-index: 10 !important;
+  box-shadow: 10px 10px 0px #ffffff;
+}
+
+.stack-card:hover img {
+  object-fit: contain;
+  background: #000000;
+}
+
+/* PAGE 6: OS Subwindow Replica */
+.os-subwindow {
+  border: 2px solid #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.os-header-bar {
+  background: #ffffff;
+  height: 25px;
+  padding: 3px;
+}
+
+.accent-bar {
+  width: 100%;
+  height: 100%;
+  background: #000000;
+}
+
+.os-inner-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.folder-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.pixel-folder-icon {
+  width: 32px;
+  height: 24px;
+  background: #ffffff;
+  position: relative;
+}
+
+.pixel-folder-icon::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 12px;
+  height: 5px;
+  background: #ffffff;
+}
+
+.portfolio-image-wrapper {
+  width: 100%;
+  flex: 1;
+  border: 1px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.portfolio-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* PAGE 7: Outro Section */
+.outro-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outro-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2.2rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* ========================================================= */
+/* MOBILE RESPONSIVE OVERRIDES (ONLY ACTIVE ON SMALL SCREENS) */
+/* ========================================================= */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 0 1rem;
+  }
+  
+  .navbar .logo {
+    font-size: 0.65rem;
+  }
+
+  .nav-links {
+    gap: 0.8rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+
+  /* Page & Window Containers */
+  .page-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 65px 0.8rem 1.5rem 0.8rem;
+  }
+
+  .full-window {
+    height: auto;
+    min-height: 80vh;
+  }
+
+  .window-body {
+    padding: 1.2rem;
+  }
+
+  /* Typography */
+  h1.name {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .greeting, .sub-heading {
+    font-size: 1rem;
+  }
+
+  /* Page 1: Intro Layout & Card Stack */
+  .intro-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .intro-stack-container {
+    width: 100%;
+    height: 320px;
+  }
+
+  .intro-card {
+    width: 160px;
+    height: 180px;
+  }
+
+  .intro-card-1 {
+    transform: translateX(-40px) translateY(-50px) rotate(-3deg);
+  }
+
+  .intro-card-2 {
+    transform: translateX(40px) translateY(0px) rotate(4deg);
+  }
+
+  .intro-card-3 {
+    transform: translateX(-30px) translateY(50px) rotate(-2deg);
+  }
+
+  /* Page 3: Contact List */
+  .contact-window {
+    padding: 1.2rem;
+  }
+
+  .contact-window h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-window .accent-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-list {
+    font-size: 1rem;
+    line-height: 2.2;
+    word-break: break-word;
+  }
+
+  .contact-list strong {
+    min-width: 100px;
+    display: block;
+  }
+
+  /* Page 4: Activities Frame */
+  .activities-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .activity-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .activity-btn {
+    font-size: 0.95rem;
+    padding: 8px;
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .project-display-area {
+    width: 100%;
+    height: 380px;
+  }
+
+  /* Page 5: Achievements Stack */
+  .stacked-achievements-container {
+    height: 380px;
+  }
+
+  .stack-card {
+    width: 220px;
+    height: 280px;
+  }
+
+  .card-1 {
+    transform: translateX(-60px) rotate(-6deg);
+  }
+
+  .card-2 {
+    transform: translateX(0px) rotate(0deg);
+  }
+
+  .card-3 {
+    transform: translateX(60px) rotate(6deg);
+  }
+
+  .stack-card p {
+    font-size: 0.9rem;
+  }
+
+  /* Page 7: Outro Text */
+  .outro-text {
+    font-size: 1.4rem;
+  }
+}
