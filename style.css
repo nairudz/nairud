@@ -12,7 +12,6 @@ html {
   overflow-x: hidden;
 }
 
-/* Starfield Background Canvas */
 #starfield {
   position: fixed;
   top: 0;
@@ -23,7 +22,6 @@ html {
   background: #000000;
 }
 
-/* Animated Floating Pixel Art Clouds */
 .cloud {
   position: fixed;
   background: #ffffff;
@@ -48,7 +46,6 @@ html {
   100% { transform: translateX(calc(100vw + 200px)); }
 }
 
-/* Navigation Bar */
 .navbar {
   position: fixed;
   top: 0;
@@ -87,7 +84,6 @@ html {
   text-decoration: underline;
 }
 
-/* Screen Section Container - Full Screen Fill */
 .page-section {
   width: 100vw;
   height: 100vh;
@@ -98,7 +94,6 @@ html {
   border-bottom: 1px solid #333333;
 }
 
-/* Full Window OS Style Containers */
 .full-window {
   width: 100%;
   max-width: 1200px;
@@ -141,7 +136,6 @@ html {
   flex-direction: column;
 }
 
-/* Section Typography */
 h1.name {
   font-size: 3rem;
   margin: 15px 0;
@@ -174,7 +168,6 @@ h2 {
   font-size: 1.1rem;
 }
 
-/* PAGE 1: Intro Section Screen Layout & Staggered 3-Picture Stack */
 .intro-layout {
   display: flex;
   flex-direction: row;
@@ -203,6 +196,8 @@ h2 {
   box-shadow: 6px 6px 0px #ffffff;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.2s, box-shadow 0.3s;
   cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
 }
 
 .intro-card img {
@@ -212,38 +207,34 @@ h2 {
   border: 1px solid #ffffff;
 }
 
-/* Offsets matching your custom drawing */
-/* 1. Top-Left Card */
 .intro-card-1 {
   transform: translateX(-70px) translateY(-110px) rotate(-3deg);
   z-index: 1;
 }
 
-/* 2. Middle-Right Card */
 .intro-card-2 {
   transform: translateX(60px) translateY(-10px) rotate(4deg);
   z-index: 2;
 }
 
-/* 3. Bottom-Left Card */
 .intro-card-3 {
   transform: translateX(-60px) translateY(100px) rotate(-2deg);
   z-index: 3;
 }
 
-/* Hover Effect: Expands Hovered Intro Photo & Displays Full Picture in Front */
-.intro-card:hover {
+.intro-card:hover,
+.intro-card:focus {
   transform: translateX(0px) translateY(0px) scale(1.25) rotate(0deg) !important;
   z-index: 20 !important;
   box-shadow: 10px 10px 0px #ffffff;
 }
 
-.intro-card:hover img {
-  object-fit: contain; /* Full picture on hover */
+.intro-card:hover img,
+.intro-card:focus img {
+  object-fit: contain;
   background: #000000;
 }
 
-/* PAGE 3: Contact Window */
 .contact-window {
   display: flex;
   flex-direction: column;
@@ -278,7 +269,6 @@ h2 {
   text-decoration: underline;
 }
 
-/* PAGE 4: Activity Embedded View */
 .activities-layout {
   display: flex;
   gap: 2rem;
@@ -331,7 +321,6 @@ h2 {
   background: #ffffff;
 }
 
-/* PAGE 5: 3-Stack Interactive Achievement Cards */
 .stacked-achievements-container {
   position: relative;
   width: 100%;
@@ -355,6 +344,8 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  outline: none;
+  touch-action: manipulation;
 }
 
 .stack-card img {
@@ -386,18 +377,19 @@ h2 {
   z-index: 1;
 }
 
-.stack-card:hover {
+.stack-card:hover,
+.stack-card:focus {
   transform: translateX(0) scale(1.18) rotate(0deg) !important;
   z-index: 10 !important;
   box-shadow: 10px 10px 0px #ffffff;
 }
 
-.stack-card:hover img {
+.stack-card:hover img,
+.stack-card:focus img {
   object-fit: contain;
   background: #000000;
 }
 
-/* PAGE 6: OS Subwindow Replica */
 .os-subwindow {
   border: 2px solid #ffffff;
   height: 100%;
@@ -457,15 +449,24 @@ h2 {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  outline: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-image-wrapper img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-/* PAGE 7: Outro Section */
+.portfolio-image-wrapper:hover img,
+.portfolio-image-wrapper:focus img {
+  transform: scale(1.08);
+}
+
 .outro-section {
   display: flex;
   justify-content: center;
@@ -479,11 +480,7 @@ h2 {
   text-align: center;
 }
 
-/* ========================================================= */
-/* MOBILE RESPONSIVE OVERRIDES (ONLY ACTIVE ON SMALL SCREENS) */
-/* ========================================================= */
 @media (max-width: 768px) {
-  /* Navbar */
   .navbar {
     padding: 0 1rem;
   }
@@ -503,7 +500,6 @@ h2 {
     font-size: 0.75rem;
   }
 
-  /* Page & Window Containers */
   .page-section {
     height: auto;
     min-height: 100vh;
@@ -519,7 +515,6 @@ h2 {
     padding: 1.2rem;
   }
 
-  /* Typography */
   h1.name {
     font-size: 2rem;
   }
@@ -532,7 +527,6 @@ h2 {
     font-size: 1rem;
   }
 
-  /* Page 1: Intro Layout & Card Stack */
   .intro-layout {
     flex-direction: column;
     gap: 2rem;
@@ -560,7 +554,6 @@ h2 {
     transform: translateX(-30px) translateY(50px) rotate(-2deg);
   }
 
-  /* Page 3: Contact List */
   .contact-window {
     padding: 1.2rem;
   }
@@ -585,7 +578,6 @@ h2 {
     display: block;
   }
 
-  /* Page 4: Activities Frame */
   .activities-layout {
     flex-direction: column;
     gap: 1rem;
@@ -610,7 +602,6 @@ h2 {
     height: 380px;
   }
 
-  /* Page 5: Achievements Stack */
   .stacked-achievements-container {
     height: 380px;
   }
@@ -636,7 +627,6 @@ h2 {
     font-size: 0.9rem;
   }
 
-  /* Page 7: Outro Text */
   .outro-text {
     font-size: 1.4rem;
   }

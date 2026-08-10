@@ -11,15 +11,12 @@
 </head>
 <body>
 
-  <!-- Dynamic Starfield Background Canvas -->
   <canvas id="starfield"></canvas>
 
-  <!-- Pixel Art Cloud Overlay Elements -->
   <div class="cloud cloud-1"></div>
   <div class="cloud cloud-2"></div>
   <div class="cloud cloud-3"></div>
 
-  <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="logo">RODZIF's PORTFOLIO</div>
     <ul class="nav-links">
@@ -32,7 +29,6 @@
     </ul>
   </nav>
 
-  <!-- PAGE 1: Intro Section -->
   <section id="page1" class="page-section">
     <div class="window-box full-window">
       <div class="window-header"><div class="window-controls"><span></span><span></span><span></span></div></div>
@@ -43,15 +39,14 @@
           <p class="sub-heading">2nd year, BSIT student</p>
         </div>
 
-        <!-- 3-Picture Stacked Frame Container -->
         <div class="intro-stack-container">
-          <div class="intro-card intro-card-1">
+          <div class="intro-card intro-card-1" tabindex="0">
             <img src="profile.jpg" alt="Rodzif Jade Braga 1">
           </div>
-          <div class="intro-card intro-card-2">
+          <div class="intro-card intro-card-2" tabindex="0">
             <img src="picture1.jpeg" alt="Rodzif Jade Braga 2">
           </div>
-          <div class="intro-card intro-card-3">
+          <div class="intro-card intro-card-3" tabindex="0">
             <img src="picture2.jpg" alt="Rodzif Jade Braga 3">
           </div>
         </div>
@@ -60,7 +55,6 @@
     </div>
   </section>
 
-  <!-- PAGE 2: About Me Section -->
   <section id="page2" class="page-section">
     <div class="window-box full-window">
       <div class="window-header"><div class="window-controls"><span></span><span></span><span></span></div></div>
@@ -83,7 +77,6 @@
     </div>
   </section>
 
-  <!-- PAGE 3: Contact Reach Out Section -->
   <section id="page3" class="page-section">
     <div class="window-box full-window">
       <div class="window-header"><div class="window-controls"><span></span><span></span><span></span></div></div>
@@ -102,7 +95,6 @@
     </div>
   </section>
 
-<!-- PAGE 4: My Activities (Instant Live Product Presentation) -->
   <section id="page4" class="page-section">
     <div class="window-box full-window">
       <div class="window-header">
@@ -118,7 +110,6 @@
           </ul>
 
           <div class="project-display-area">
-            <!-- PAGE 4: My Activities -->
             <div id="fashion-blog" class="project-content active">
               <iframe src="./fashion-blog/index.html" class="live-frame" title="Fashion Blog Presentation"></iframe>
             </div>
@@ -129,29 +120,28 @@
 
             <div id="davies-burger" class="project-content">
               <iframe src="./davies-burger/index.html" class="live-frame" title="Davies Burger Presentation"></iframe>
-            </div> <!-- Added missing closure for davies-burger -->
-          </div> <!-- closes project-display-area -->
-        </div> <!-- closes activities-layout -->
-      </div> <!-- closes window-body -->
-    </div> <!-- closes window-box -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- PAGE 5: Achievements Section -->
   <section id="page5" class="page-section">
     <div class="window-box full-window">
       <div class="window-header"><div class="window-controls"><span></span><span></span><span></span></div></div>
       <div class="window-body">
         <h2>MY ACHIEVEMENTS</h2>
         <div class="stacked-achievements-container">
-          <div class="stack-card card-1">
+          <div class="stack-card card-1" tabindex="0">
             <img src="pic1.jpg" alt="Technosphere 2025">
             <p>Technosphere 2025</p>
           </div>
-          <div class="stack-card card-2">
+          <div class="stack-card card-2" tabindex="0">
             <img src="pic2.jpg" alt="Graduated High School">
             <p>Graduated High School</p>
           </div>
-          <div class="stack-card card-3">
+          <div class="stack-card card-3" tabindex="0">
             <img src="pic3.jpg" alt="Big Papaya">
             <p>Big Papaya</p>
           </div>
@@ -160,7 +150,6 @@
     </div>
   </section>
 
-  <!-- PAGE 6: Personal Projects Section -->
   <section id="page6" class="page-section">
     <div class="window-box full-window">
       <div class="window-header"><div class="window-controls"><span></span><span></span><span></span></div></div>
@@ -175,7 +164,7 @@
               <div class="pixel-folder-icon"></div>
               <h3>My Portfolio</h3>
             </div>
-            <div class="portfolio-image-wrapper">
+            <div class="portfolio-image-wrapper" tabindex="0">
               <img src="portfolio.png" alt="My Portfolio Preview">
             </div>
           </div>
@@ -184,14 +173,12 @@
     </div>
   </section>
 
-  <!-- PAGE 7: Outro Page -->
   <section id="page7" class="page-section outro-section">
     <h1 class="outro-text">Stay safe everyone!</h1>
   </section>
 
   <script src="script.js"></script>
   <script>
-    /* Tab Switcher Script for Page 4 Activities */
     function switchActivity(activityId, element) {
       const contents = document.querySelectorAll('.project-content');
       contents.forEach(content => content.classList.remove('active'));
