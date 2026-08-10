@@ -542,16 +542,19 @@ h2 {
     height: 180px;
   }
 
-  .intro-card-1 {
-    transform: translateX(-40px) translateY(-50px) rotate(-3deg);
+  .intro-card-1:not(.active-pop) {
+    transform: translateX(-40px) translateY(-50px) rotate(-3deg) !important;
+    z-index: 1 !important;
   }
 
-  .intro-card-2 {
-    transform: translateX(40px) translateY(0px) rotate(4deg);
+  .intro-card-2:not(.active-pop) {
+    transform: translateX(40px) translateY(0px) rotate(4deg) !important;
+    z-index: 2 !important;
   }
 
-  .intro-card-3 {
-    transform: translateX(-30px) translateY(50px) rotate(-2deg);
+  .intro-card-3:not(.active-pop) {
+    transform: translateX(-30px) translateY(50px) rotate(-2deg) !important;
+    z-index: 3 !important;
   }
 
   .contact-window {
@@ -611,20 +614,30 @@ h2 {
     height: 280px;
   }
 
-  .card-1 {
-    transform: translateX(-60px) rotate(-6deg);
+  .card-1:not(.active-pop) {
+    transform: translateX(-60px) rotate(-6deg) !important;
+    z-index: 1 !important;
   }
 
-  .card-2 {
-    transform: translateX(0px) rotate(0deg);
+  .card-2:not(.active-pop) {
+    transform: translateX(0px) rotate(0deg) !important;
+    z-index: 2 !important;
   }
 
-  .card-3 {
-    transform: translateX(60px) rotate(6deg);
+  .card-3:not(.active-pop) {
+    transform: translateX(60px) rotate(6deg) !important;
+    z-index: 1 !important;
   }
 
   .stack-card p {
     font-size: 0.9rem;
+  }
+
+  .intro-card.active-pop,
+  .stack-card.active-pop {
+    transform: translateX(0px) translateY(0px) scale(1.2) rotate(0deg) !important;
+    z-index: 100 !important;
+    box-shadow: 10px 10px 0px #ffffff !important;
   }
 
   .outro-text {

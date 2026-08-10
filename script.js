@@ -1,4 +1,3 @@
-// Instant Interactive Activity Presentation Switcher
 function switchActivity(activityId, element) {
   const contents = document.querySelectorAll('.project-content');
   contents.forEach(item => {
@@ -25,7 +24,7 @@ function switchActivity(activityId, element) {
   }
 }
 
-// Background Starfield Animation Generator
+
 const canvas = document.getElementById('starfield');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -70,24 +69,40 @@ if (canvas) {
   animateStars();
 }
 
-// Tap-in / Tap-away Mobile Interaction Handler
+
 document.addEventListener('DOMContentLoaded', () => {
   const interactiveCards = document.querySelectorAll('.intro-card, .stack-card, .portfolio-image-wrapper');
 
+  function resetAllCards() {
+    interactiveCards.forEach(card => card.classList.remove('active-pop'));
+  }
+
   interactiveCards.forEach(card => {
-    card.addEventListener('click', (e) => {
+    const handleTap = (e) => {
       e.stopPropagation();
 
-      if (card.classList.contains('active-pop')) {
-        card.classList.remove('active-pop');
-      } else {
-        interactiveCards.forEach(c => c.classList.remove('active-pop'));
+      const isAlreadyActive = card.classList.contains('active-pop');
+
+      resetAllCards();
+
+      if (!isAlreadyActive) {
         card.classList.add('active-pop');
       }
-    });
+    };
+
+    card.addEventListener('touchend', handleTap);
+    card.addEventListener('click', handleTap);
   });
 
-  document.addEventListener('click', () => {
-    interactiveCards.forEach(card => card.classList.remove('active-pop'));
+  document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.intro-card, .stack-card, .portfolio-image-wrapper')) {
+      resetAllCards();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.intro-card, .stack-card, .portfolio-image-wrapper')) {
+      resetAllCards();
+    }
   });
 });
