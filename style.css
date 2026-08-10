@@ -538,8 +538,8 @@ h2 {
   }
 
   .intro-card {
-    width: 170px;
-    height: 190px;
+    width: 160px;
+    height: 180px;
   }
 
   .intro-card-1:not(.active-pop) {
@@ -635,12 +635,9 @@ h2 {
 
   .intro-card.active-pop,
   .stack-card.active-pop {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) scale(1.25) rotate(0deg) !important;
+    transform: translateX(0px) translateY(0px) scale(1.35) rotate(0deg) !important;
     z-index: 999 !important;
-    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.8), 8px 8px 0px #ffffff !important;
+    box-shadow: 12px 12px 0px #ffffff !important;
   }
 
   .outro-text {

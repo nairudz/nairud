@@ -76,8 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   interactiveCards.forEach(card => {
-    card.addEventListener('touchend', (e) => {
-      e.preventDefault(); 
+    const toggleCard = (e) => {
       e.stopPropagation();
 
       const isAlreadyActive = card.classList.contains('active-pop');
@@ -86,26 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isAlreadyActive) {
         card.classList.add('active-pop');
       }
-    });
+    };
 
-    card.addEventListener('click', (e) => {
-      e.stopPropagation();
-
-      const isAlreadyActive = card.classList.contains('active-pop');
-      resetAllCards();
-
-      if (!isAlreadyActive) {
-        card.classList.add('active-pop');
-      }
-    });
+    card.addEventListener('pointerdown', toggleCard);
   });
 
-  const handleOutsideAction = (e) => {
+  const closeOutside = (e) => {
     if (!e.target.closest('.intro-card, .stack-card, .portfolio-image-wrapper')) {
       resetAllCards();
     }
   };
 
-  document.addEventListener('touchend', handleOutsideAction);
-  document.addEventListener('click', handleOutsideAction);
+  document.addEventListener('pointerdown', closeOutside);
 });
