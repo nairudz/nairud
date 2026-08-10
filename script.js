@@ -24,7 +24,6 @@ function switchActivity(activityId, element) {
   }
 }
 
-
 const canvas = document.getElementById('starfield');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -69,7 +68,6 @@ if (canvas) {
   animateStars();
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const interactiveCards = document.querySelectorAll('.intro-card, .stack-card, .portfolio-image-wrapper');
 
@@ -78,31 +76,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   interactiveCards.forEach(card => {
-    const handleTap = (e) => {
+    card.addEventListener('touchend', (e) => {
+      e.preventDefault(); 
       e.stopPropagation();
 
       const isAlreadyActive = card.classList.contains('active-pop');
-
       resetAllCards();
 
       if (!isAlreadyActive) {
         card.classList.add('active-pop');
       }
-    };
+    });
 
-    card.addEventListener('touchend', handleTap);
-    card.addEventListener('click', handleTap);
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const isAlreadyActive = card.classList.contains('active-pop');
+      resetAllCards();
+
+      if (!isAlreadyActive) {
+        card.classList.add('active-pop');
+      }
+    });
   });
 
-  document.addEventListener('touchstart', (e) => {
+  const handleOutsideAction = (e) => {
     if (!e.target.closest('.intro-card, .stack-card, .portfolio-image-wrapper')) {
       resetAllCards();
     }
-  });
+  };
 
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.intro-card, .stack-card, .portfolio-image-wrapper')) {
-      resetAllCards();
-    }
-  });
+  document.addEventListener('touchend', handleOutsideAction);
+  document.addEventListener('click', handleOutsideAction);
 });
