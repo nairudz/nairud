@@ -12,6 +12,8 @@ The website also features a collection of practical web development assignments 
 
 This repository contains the complete source code for this website, which was created entirely as an individual project to showcase my personal work. The final page leaves visitors with a warm closing message reminding everyone to stay safe.
 
+To access the live interactive website, visit https://nairudz.github.io/nairud/ directly in any modern desktop or mobile web browser. Built with responsive web design principles, the site dynamically adapts to all screen sizes—delivering a full desktop window experience on larger displays and an optimized, touch-friendly retro layout complete with interactive card-stack pop-ups on mobile devices.
+
 ## File Guide
 
 - `index.html` - Structure, content, layout
