@@ -21,13 +21,11 @@ This repository contains the complete source code for this website, which was cr
 - `picture1` - second picture in  the first page
 - `ppicture2` - third picture in  the first page
 - `pic1` - first picture in  my achievements
-- `pic2` - first picture in  my achievements
-- `pic3` - first picture in  my achievements
+- `pic2` - second picture in  my achievements
+- `pic3` - third picture in  my achievements
 - `portfolio` - a screenshot of my portfolio profile
 
-## Student Reminder
 
-This template is only a guide. It is here to make the first steps easier, not to limit your creativity. You are encouraged to experiment, edit, improve, and create something original on your own.
 
 ## Sub Projects
 
