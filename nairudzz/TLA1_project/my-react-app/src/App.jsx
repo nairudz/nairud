@@ -15,37 +15,31 @@ function App() {
     const trimmedWork = work.trim();
     const trimmedIncome = incomeRange.trim();
 
-    // Guard Clause Validation
     if (!trimmedName || !trimmedDesc || !trimmedWork || !trimmedIncome) {
       alert("Please complete all input fields, including work and income range.");
       return;
     }
 
-    // Format Name
     let formattedName = trimmedName.toUpperCase();
     if (formattedName.length > 25) {
       formattedName = formattedName.slice(0, 25) + "...";
     }
 
-    // Format Description
     let formattedDesc = trimmedDesc;
     if (formattedDesc.length > 25) {
       formattedDesc = formattedDesc.slice(0, 25) + "...";
     }
 
-    // Format Work
     let formattedWork = trimmedWork;
     if (formattedWork.length > 25) {
       formattedWork = formattedWork.slice(0, 25) + "...";
     }
 
-    // Format Income Range with Peso symbol if not included
     let formattedIncome = trimmedIncome;
     if (!formattedIncome.includes('₱') && !formattedIncome.toLowerCase().includes('php')) {
       formattedIncome = `₱${formattedIncome}`;
     }
 
-    // Append new category to state
     setCategories([
       ...categories,
       {
@@ -56,13 +50,11 @@ function App() {
       },
     ]);
 
-    // Trigger Success message
     setShowSuccess(true);
     setTimeout(() => {
       setShowSuccess(false);
     }, 3000);
 
-    // Reset inputs
     setCatName('');
     setCatDesc('');
     setWork('');
@@ -75,14 +67,12 @@ function App() {
         <div className="row justify-content-center">
           <div className="col-lg-8">
 
-            {/* Success Alert Banner */}
             {showSuccess && (
               <div className="alert alert-success alert-dismissible fade show fw-bold text-center mb-4 shadow-sm" role="alert">
                 🎉 Success! Added work and income category successfully!
               </div>
             )}
 
-            {/* Registration Card */}
             <div className="card shadow-sm border-0 mb-4">
               <div className="card-header bg-success text-white py-3">
                 <h1 className="h5 mb-0 fw-bold">Income Category Registration</h1>
@@ -90,7 +80,6 @@ function App() {
               <div className="card-body p-4">
                 <form onSubmit={(e) => e.preventDefault()}>
                   
-                  {/* Category Name */}
                   <div className="mb-3">
                     <label htmlFor="txtCatName" className="form-label fw-semibold">
                       Category Name
@@ -105,7 +94,6 @@ function App() {
                     />
                   </div>
 
-                  {/* Description */}
                   <div className="mb-3">
                     <label htmlFor="txtCatDesc" className="form-label fw-semibold">
                       Description
@@ -120,7 +108,6 @@ function App() {
                     />
                   </div>
 
-                  {/* Work / Occupation */}
                   <div className="mb-3">
                     <label htmlFor="txtWork" className="form-label fw-semibold">
                       Work / Occupation
@@ -135,7 +122,6 @@ function App() {
                     />
                   </div>
 
-                  {/* Income Range */}
                   <div className="mb-3">
                     <label htmlFor="txtIncomeRange" className="form-label fw-semibold">
                       Income Range (₱)
@@ -161,7 +147,6 @@ function App() {
               </div>
             </div>
 
-            {/* Ledger Table Card */}
             <div className="card shadow-sm border-0">
               <div className="card-header bg-white py-3">
                 <h2 className="h6 mb-0 text-secondary fw-bold text-uppercase">
