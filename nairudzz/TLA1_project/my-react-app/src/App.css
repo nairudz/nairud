@@ -1,0 +1,24 @@
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+.table th.w-25 {
+  width: 25%;
+}
+
+.form-control:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+/* Green border and light green background when typed */
+.is-valid-green {
+  border-color: #198754 !important;
+  background-color: #f0fff4 !important;
+}
